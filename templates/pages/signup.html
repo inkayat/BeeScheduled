@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  {% include "dbmf/_modal.html" %}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <section class="col-lg-8 text-center">
+
+<h3 class="mt-5">
+          <strong>Welcome </strong>
+        </h3>
+        <p class="subtitle">You need to sign up and log in before you go any further</p>
+
+        <article class="row">
+          <div class="col-12 mb-3">
+            <button class="signup-btn btn btn-primary" type="button" name="button">Sign up</button>
+            {% if not user.is_anonymous %}
+              <a href="{% url 'logout' %}" class="logout-btn btn btn-danger" role="button">Log out</a>
+              <div class="mt-2">
+                Your are logged in as
+                <strong>{{ user }}</strong>.
+              </div>
+            {% else %}
+              <button class="login-btn btn btn-primary" type="button" name="button">Log in</button>
+            {% endif %}
+          </div>
+        </article>
+
+{% endblock content %}
+
+
+{% block extrascripts %}
+  <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
+  <script type="text/javascript">
+    $(function () {
+
+      // log in & sign up buttons
+      $(".login-btn").modalForm({
+        formURL: "{% url 'accounts:login' %}",
+        modalContent: ".modal-content-dbmf",
+        modalForm: ".modal-content-dbmf form"
+      });
+      $(".signup-btn").modalForm({
+        formURL: "{% url 'accounts:signup' %}",
+        modalContent: ".modal-content-dbmf",
+        modalForm: ".modal-content-dbmf form"
+      });
+
+
+
+    });
+  </script>
+{% endblock extrascripts %}

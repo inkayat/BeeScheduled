@@ -1,0 +1,42 @@
+{% load static %}
+
+<!-- header -->
+<header>
+
+  <!-- messages -->
+  <div>
+    {% if messages %}
+      {% for message in messages %}
+        <div style="border-radius:0;" {% if message.tags %} class="alert alert-icon alert-{{ message.tags }} alert-dismissible fade show mb-0" role="alert" {% endif %}>
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+  <!-- end messages -->
+
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-md navbar-light p-0 justify-content-end justify-content-md-center">
+
+    <button class="navbar-toggler custom-toggler p-3" type="button" data-toggle="modal" data-target="#navbar-modal">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <ul class="d-none d-md-flex navbar-nav mx-auto">
+      <a class="nav-item nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %} py-4" href="{% url 'pages:index' %}">Home</a>
+      <a class="nav-item nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %} py-4 ml-4 ml-lg-5" href="{% url 'pages:profile' %}">Profile</a>
+      <a class="nav-item nav-link {% if request.resolver_match.url_name == 'open_source' or request.resolver_match.url_name == 'dbmf' or request.resolver_match.url_name == 'dfs' or request.resolver_match.url_name == 'create_movie' or request.resolver_match.url_name == 'update_movie' %}active{% endif %} py-4 ml-4 ml-lg-5" href="{% url 'pages:open_source' %}">Create Schedule</a>
+      <a class="nav-item nav-link {% if request.resolver_match.url_name == 'rate_lecturer' %}active{% endif %} py-4 ml-4 ml-lg-5" href="{% url 'pages:rate_lecturer' %}"> Rate Lecturer</a>
+      <a class="nav-item nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %} py-4 ml-4 ml-lg-5" href="{% url 'pages:about' %}">About</a>
+       <a class="nav-item nav-link {% if request.resolver_match.url_name == 'logout' %}active{% endif %} py-4 ml-4 ml-lg-5" href="{% url 'logout' %}">Log out</a>
+    </ul>
+  </nav>
+  <!-- end navbar -->
+
+  {% include '_navbar_modal.html' %}
+
+</header>
+<!-- end header -->

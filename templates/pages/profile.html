@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% csrf_token %}
+
+{% block content %}
+
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <section class="col-lg-12 text-center">
+
+        <p class="subtitle"></p>
+        <a href="https://github.com/trco/django-bootstrap-modal-forms" target="_blank" style="text-decoration: none;">
+        </a>
+        <a class="ml-3" href="" target="_blank"></a>
+
+      </section>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <section class="col-lg-8 text-center">
+        <h5 class="mt-3">
+          <strong>Courses you have taken</strong>
+        </h5>
+        <p class="subtitle"></p>
+
+        <article class="row justify-content-center">
+    <form action="" method="post">{% csrf_token %}
+      <table class="table is-fullwidth" rules="all">
+        <thead>
+        <tr>
+            <th>CODE</th>
+            <th>TITLE</th>
+            <th></th>
+            </tr>
+      </thead>
+      <tbody>
+      <tr {% for course in courses %}>
+            <td>{{course.code}}</td>
+            <td>{{course.title}}</td>
+            <td>
+                <button class="button is-danger is-small" value={{course.code}} name="course_to_delete">Delete</button>
+            </td>
+        </tr {% endfor %}>
+      </tbody>
+      </table>
+      <div class="field is-grouped">
+      <br>
+      </div>
+    </form>
+
+
+
+        </article>
+
+      </section>
+    </div>
+  </div>
+
+{% endblock content %}

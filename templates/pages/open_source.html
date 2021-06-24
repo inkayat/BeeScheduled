@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <style>
+    .button {
+      background-color: rgb(209, 207, 57); /* Green */
+      border: none;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 8px 4px;
+      cursor: pointer;
+      border-radius: 20px;
+
+    }
+    </style>
+    </head>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <section class="col-lg-6 text-center">
+
+      <h1 class="typewriter mt-3 mb-5"></h1>
+
+      <article>
+
+        <h3 class="mb-3">
+          ALL COURSES
+          </a>
+        </h3>
+        <p class="subtitle">Select the courses you have completed!</p>
+        <a href="{% url 'pages:taken_course' %}" class = button>HERE</a>
+
+
+        <h3 class="mt-5">
+          CREATE SCHEDULE
+          <a href="" target="_blank" style="text-decoration: none;">
+          </a>
+        </h3>
+        <p class="subtitle">Select the courses you want to take!</p>
+        <a href="{% url 'pages:create_schedule' %}" class =button>HERE</a>
+
+    </section>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block extrascripts %}
+  <script type="text/javascript" src="{% static 'js/typeit.min.js' %}"></script>
+  <script type="text/javascript">
+  var instance = new TypeIt(".typewriter", {
+    speed: 50,
+    waitUntilVisible: true,
+    cursor: false
+  })
+  .type("Bee Scheduled").go();
+  </script>
+{% endblock extrascripts %}

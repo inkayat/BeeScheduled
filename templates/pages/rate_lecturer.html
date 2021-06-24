@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+{% csrf_token %}
+
+{% block content %}
+<head>
+    <style>
+    .button {
+      background-color: rgb(209, 207, 57); /* Green */
+      border: none;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 8px 4px;
+      cursor: pointer;
+      border-radius: 20px;
+      width:15%
+
+    }
+    .box {
+      align-items: center;
+      background-color: #d6d439;
+      color: white;
+      display: flex;
+      justify-content: center;
+      height: 80px;
+      position: center;
+      width: 360px;
+      font-size: 26px;
+      text-align: center;
+
+
+    }
+    </style>
+    </head>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <section class="col-lg-12 text-center">
+
+        <div align= "center"><h1 class="box">Rate Your Lecturers<span></span></h1></div>
+        <p class="subtitle"></p>
+        <a href="" target="_blank" style="text-decoration: none;">
+        </a>
+        <a class="ml-3" href="" target="_blank"></a>
+
+      </section>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <section class="col-lg-8 text-center">
+
+        <article class="row justify-content-center">
+    <form action="" method="post">{% csrf_token %}
+      <table class="table is-fullwidth" rules="all">
+        <thead>
+        <tr>
+            <th>Lecturer Name</th>
+            <th>Number of Votes</th>
+            <th>Average Score</th>
+            <th>Your Rate</th>
+            </tr>
+      </thead>
+      <tbody>
+      <tr {% for lecturer in lecturers %}>
+            <td>{{lecturer.name}}</td>
+            <td>{{lecturer.vote_count}}</td>
+            <td>{{lecturer.vote_avg|floatformat:2 }}</td>
+            <td><input type="number" name="rates[]" value="0" min="0", max = "5"></td>
+        </tr {% endfor %}>
+      </tbody>
+      </table>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button">Add</button>
+        </div>
+      </div>
+    </form>
+
+
+
+
+
+
+        </article>
+
+      </section>
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block extrascripts %}
+  <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
+  <script type="text/javascript">
+    $(function () {
+
+      // hide message
+      $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+        $(".alert").slideUp(500);
+      });
+
+      // autofocus to first input field of a modal
+      $('.modal').on('shown.bs.modal', function () {
+        $('form').find('input[type=text]').filter(':visible:first').focus();
+      });
+
+    });
+  </script>
+{% endblock extrascripts %}

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% csrf_token %}
+
+{% block content %}
+<head>
+    <style>
+    .x {
+      background-color: rgb(209, 207, 57); /* Green */
+      border: none;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 8px 4px;
+      cursor: pointer;
+      border-radius: 20px;
+
+    }
+    </style>
+    </head>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <section class="col-lg-12 text-center">
+
+        <h1 class="my-4">Your Courses<span></span></h1>
+        <p class="subtitle"></p>
+        <a href="https://github.com/trco/django-bootstrap-modal-forms" target="_blank" style="text-decoration: none;">
+        </a>
+        <a class="ml-3" href="" target="_blank"></a>
+
+      </section>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <section class="col-lg-8 text-center">
+
+
+
+        <h3 class="mt-3">
+          <strong>Add Course</strong>
+        </h3>
+        <p class="subtitle"></p>
+
+        <article class="row justify-content-center">
+    <form action="" method="post">{% csrf_token %}
+      <table class="table is-fullwidth" rules="all">
+        <thead>
+        <tr>
+            <th>     </th>
+            <th>CODE</th>
+            <th>TITLE</th>
+            </tr>
+      </thead>
+      <tbody>
+      <tr {% for course in courses %}>
+            <td><input type="checkbox" name="checks[]" value={{course}}/></td>
+            <td>{{course.code}}</td>
+            <td>{{course.title}}</td>
+        </tr {% endfor %}>
+      </tbody>
+      </table>
+      <div class="field is-grouped">
+      <br>
+        <div class="control">
+          <button class="button is-danger is-small">Add</button>
+        </div>
+      </div>
+    </form>
+
+
+        </article>
+
+      </section>
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block extrascripts %}
+  <script src="{% static 'js/jquery.bootstrap.modal.forms.min.js' %}"></script>
+  <script type="text/javascript">
+    $(function () {
+
+    
+
+      // hide message
+      $(".alert").fadeTo(2000, 500).slideUp(500, function(){
+        $(".alert").slideUp(500);
+      });
+
+      // autofocus to first input field of a modal
+      $('.modal').on('shown.bs.modal', function () {
+        $('form').find('input[type=text]').filter(':visible:first').focus();
+      });
+
+    });
+  </script>
+{% endblock extrascripts %}
