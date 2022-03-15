@@ -4,10 +4,6 @@ BeeScheduled is a shortest way the planning your schedule. It is built with [Pyt
 
 This project has the following basic apps:
 
-* App1 (short desc)
-* App2 (short desc)
-* App3 (short desc)
-
 ## Installation
 
 ### Quick start
