@@ -2,10 +2,6 @@
 
 BeeScheduled is a shortest way the planning your schedule. It is built with [Python][0] using the [Django Web Framework][1].
 
-This project has the following basic apps:
-
-## Installation
-
 ### Quick start
 
 To set up a development environment quickly, first install Python 3. It
