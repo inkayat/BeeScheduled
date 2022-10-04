@@ -1,6 +1,6 @@
 # BeeScheduled
 
-BeeScheduled is a shortest way the planning your schedule. It is built with [Python][0] using the [Django Web Framework][1].
+BeeScheduled is a shortest way the planning your course schedule for ITU students. It is built with [Python][0] using the [Django Web Framework][1].
 
 ### Quick start
 
